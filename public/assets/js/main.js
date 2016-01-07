@@ -43,6 +43,15 @@
 		// Scrolly.
 			$('.scrolly').scrolly();
 
+
+			$('a[href="#one"]').bind('click', function(){
+				setTimeout(function(){
+					$('#page').focus();
+				},1200);
+			});
+
+
+
 	});
 
 })(jQuery);

@@ -28,6 +28,10 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
+
+
+    'api_url' => env('API_URL'),
+
     /*
     |--------------------------------------------------------------------------
     | Application URL

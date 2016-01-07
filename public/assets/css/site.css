@@ -1,3 +1,5 @@
 .hljs {
     background-color: #3C3C3C !important;
+    max-height:500px;
+    overflow-y: auto;
 }
