@@ -59,6 +59,9 @@
 								<li>Microdata</li>
 								<li style="opacity: 0.8">... plus more</li>
 							</ul>
+							<ul class="actions uniform">
+								<li><a href="/docs" class="button special">Read the documentation</a></li>
+							</ul>
 						</div>
 						<div class="6u$ 12u$(medium) important(medium)">
 							<header>
