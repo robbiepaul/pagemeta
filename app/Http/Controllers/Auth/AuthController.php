@@ -68,7 +68,7 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'notify' => $notify,
             'api_key' => md5($data['email'].time()),
-            'requests_starts_at' => \DB::raw('NOW()'),
+            'requests_starts_at' => date('Y-m-d H:i:s'),
             'requests_per_month' => config('app.defaults.requests_per_month'),
             'requests_left' => config('app.defaults.requests_per_month'),
         ]);
