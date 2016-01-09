@@ -167,7 +167,6 @@ return [
         PageMeta\Providers\RouteServiceProvider::class,
 
         'Artesaos\SEOTools\Providers\SEOToolsServiceProvider',
-        RobbieP\CloudConvertLaravel\CloudConvertLaravelServiceProvider::class,
 
     ],
 
