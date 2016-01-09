@@ -21,6 +21,7 @@
 
 	</head>
 	<body>
+        @include('analytics')
 
 		<!-- Header -->
 			<section id="header">
