@@ -4,6 +4,9 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+		@include('favicon')
+
+
 		{!! SEOMeta::generate() !!}
 		{!! OpenGraph::generate() !!}
 		{!! Twitter::generate() !!}
@@ -34,7 +37,7 @@
 		<!-- One -->
 			<section id="one" class="main style1">
 				<div class="container">
-					<form method="post" action="#">
+					<div style="margin-bottom: 2em">
 						<div class="row uniform 50%">
 							<div class="9u 12u$(xsmall)">
 								<input type="text" name="page" id="page" value="" placeholder="Type a url to parse...">
@@ -43,7 +46,7 @@
 								<a href="#" class="button special fit icon fa-rocket" id="send_request" style="background-image: url(images/pic02.jpg) !important;">Send Request</a>
 							</div>
 						</div>
-					</form>
+					</div>
 					<div class="row 150%">
 						<div class="6u 12u$(medium)">
 							<header class="major">
@@ -57,7 +60,7 @@
 								<li>Images</li>
 								<li>Opengraph data</li>
 								<li>Microdata</li>
-								<li style="opacity: 0.8">... plus more</li>
+								<li style="opacity: 0.8"><a href="/docs">... plus more</a></li>
 							</ul>
 							<ul class="actions uniform">
 								<li><a href="/docs" class="button special">Read the documentation</a></li>
@@ -66,7 +69,7 @@
 						<div class="6u$ 12u$(medium) important(medium)">
 							<header>
 								<h3 style="text-transform: uppercase; border-bottom: 1px solid rgba(144, 144, 144, 0.5);">Result</h3>
-								<p style="margin-bottom: 0"><strong style="margin-right:10px">GET:</strong> {{ config('app.api_url') }} <span class="result"></span>	</p>
+								<p style="margin-bottom: 0"><strong style="margin-right:10px">GET:</strong> {{ config('app.api_url') }}<span class="result"></span>	</p>
 							</header>
 							<pre>
 								<code class="json"></code>
@@ -87,7 +90,11 @@
 						<li><strong>Free registered</strong> users are limited to <strong>20,000 requests per month</strong></li>
 					</ul>
 					<ul class="actions uniform">
-						<li><a href="/register" class="button special">Sign Up</a></li>
+						@if(!\Auth::user())
+							<li><a href="/register" class="button special">Sign Up</a></li>
+						@else
+							<li><a href="/dashboard" class="button special">Dashboard</a></li>
+						@endif
 						<li><a href="/docs" class="button">Read the docs</a></li>
 					</ul>
 				</div>
@@ -410,7 +417,7 @@
 
 				{{--</div>--}}
 			{{--</section>--}}
-		{{----}}
+
 
 		<!-- Footer -->
 			<section id="footer">

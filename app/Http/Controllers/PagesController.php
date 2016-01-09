@@ -15,13 +15,6 @@ class PagesController extends Controller
 
     public function home()
     {
-
-//        SEOMeta::setTitle('Home');
-//        SEOMeta::setDescription('This is my page description');
-//
-//        OpenGraph::setDescription('This is my page description');
-//        OpenGraph::setTitle('Home');
-//        OpenGraph::setUrl(url());
         OpenGraph::addProperty('type', 'website');
         OpenGraph::addProperty('locale', 'en-gb');
 
@@ -29,5 +22,22 @@ class PagesController extends Controller
         Twitter::setSite('@robbiepaulco');
 
         return view('main');
+    }
+
+
+    public function docs()
+    {
+
+        SEOMeta::setTitle('Documentation v1.0');
+
+        OpenGraph::setTitle('Documentation');
+
+        OpenGraph::addProperty('type', 'website');
+        OpenGraph::addProperty('locale', 'en-gb');
+
+        Twitter::setTitle('Homepage');
+        Twitter::setSite('@robbiepaulco');
+
+        return view('docs');
     }
 }

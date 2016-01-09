@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new authentication controller instance.
@@ -37,7 +37,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => ['logout', 'getLogout']]);
     }
 
     /**
@@ -49,9 +49,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
         ]);
     }
 
@@ -63,10 +62,38 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $notify = isset($data['notify']) ? $data['notify'] : 0;
+        $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'notify' => $notify,
+            'api_key' => md5($data['email'].time()),
+            'requests_starts_at' => \DB::raw('NOW()'),
+            'requests_per_month' => config('app.defaults.requests_per_month'),
+            'requests_left' => config('app.defaults.requests_per_month'),
         ]);
+
+        $this->sendWelcomeEmail($user);
+
+        return $user;
     }
+
+    /**
+     * @param $user
+     */
+    protected function sendWelcomeEmail($user)
+    {
+        try {
+            \Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
+                $m->from('hello@pagemeta.io', 'PageMeta API');
+                $m->to($user->email)->subject('Welcome to PageMeta API');
+            });
+        } catch(\Exception $e) {
+            dd($e);
+        }
+
+    }
+
+
+
 }

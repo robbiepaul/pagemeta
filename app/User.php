@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'notify', 'email', 'password', 'api_key', 'requests_starts_at', 'requests_per_month', 'requests_left',
     ];
 
     /**
@@ -22,5 +22,9 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
+    ];
+
+    protected $dates = [
+        'requests_starts_at', 'created_at', 'updated_at', 'deleted_at'
     ];
 }

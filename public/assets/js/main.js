@@ -49,8 +49,11 @@
 					$('#page').focus();
 				},1200);
 			});
+			setTimeout(function(){
+				$('<style>.header-main-fixed:after{height:0 !important}</style>').appendTo('head');
+			},1000);
 
-
+			$('form input[type=email]:first, form input[type=text]:first').focus();
 
 	});
 

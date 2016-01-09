@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'hello@pagemeta.io', 'name' => 'Page Meta API'],
 
     /*
     |--------------------------------------------------------------------------

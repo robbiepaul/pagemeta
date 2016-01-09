@@ -32,6 +32,12 @@ return [
 
     'api_url' => env('API_URL'),
 
+
+    'defaults' => [
+        'requests_per_day' => 100,
+        'requests_per_month' => 20000
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application URL
@@ -161,6 +167,7 @@ return [
         PageMeta\Providers\RouteServiceProvider::class,
 
         'Artesaos\SEOTools\Providers\SEOToolsServiceProvider',
+        RobbieP\CloudConvertLaravel\CloudConvertLaravelServiceProvider::class,
 
     ],
 
