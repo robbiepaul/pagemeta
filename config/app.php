@@ -167,6 +167,7 @@ return [
         PageMeta\Providers\RouteServiceProvider::class,
 
         'Artesaos\SEOTools\Providers\SEOToolsServiceProvider',
+        Bogardo\Mailgun\MailgunServiceProvider::class,
 
     ],
 
@@ -216,6 +217,7 @@ return [
         'SEOMeta'   => 'Artesaos\SEOTools\Facades\SEOMeta',
         'OpenGraph' => 'Artesaos\SEOTools\Facades\OpenGraph',
         'Twitter'   => 'Artesaos\SEOTools\Facades\TwitterCard',
+        'Mailgun'   => Bogardo\Mailgun\Facades\Mailgun::class
 
     ],
 

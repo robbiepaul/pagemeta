@@ -75,6 +75,10 @@ class AuthController extends Controller
 
         $this->sendWelcomeEmail($user);
 
+        if($notify == 1) {
+            $this->addUserToUpdates($user);
+        }
+
         return $user;
     }
 
@@ -89,11 +93,18 @@ class AuthController extends Controller
                 $m->to($user->email)->subject('Welcome to PageMeta API');
             });
         } catch(\Exception $e) {
-            dd($e);
+
         }
 
     }
 
+    private function addUserToUpdates($user)
+    {
+        \Mailgun::lists()->addMember('updates@pagemeta.io', [
+            'address' => $user->email,
+            'subscribed' => true
+        ]);
+    }
 
 
 }
