@@ -100,10 +100,14 @@ class AuthController extends Controller
 
     private function addUserToUpdates($user)
     {
-        \Mailgun::lists()->addMember('updates@pagemeta.io', [
-            'address' => $user->email,
-            'subscribed' => true
-        ]);
+        try {
+            \Mailgun::lists()->addMember('updates@pagemeta.io', [
+                'address' => $user->email,
+                'subscribed' => true
+            ]);
+        } catch(\Exception $e) {
+
+        }
     }
 
 
