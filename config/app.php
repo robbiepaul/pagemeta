@@ -167,8 +167,7 @@ return [
         PageMeta\Providers\RouteServiceProvider::class,
 
         'Artesaos\SEOTools\Providers\SEOToolsServiceProvider',
-        Bogardo\Mailgun\MailgunServiceProvider::class,
-        RobbieP\CloudConvertLaravel\CloudConvertLaravelServiceProvider::class
+        Bogardo\Mailgun\MailgunServiceProvider::class
 
     ],
 
