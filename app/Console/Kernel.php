@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\ClearUsed::class,
+        Commands\ResetUsed::class,
     ];
 
     /**
@@ -26,5 +27,7 @@ class Kernel extends ConsoleKernel
     {
          $schedule->command('pagemeta:clearused')
                   ->everyThirtyMinutes();
+         $schedule->command('pagemeta:resetused')
+                  ->everyFiveMinutes();
     }
 }

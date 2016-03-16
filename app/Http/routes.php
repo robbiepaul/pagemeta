@@ -30,9 +30,19 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/password/email', 'Auth\PasswordController@postEmail');
 
 //    Route::get('/test', function(){
-//        $cc1 = \CloudConvert::file(public_path('images/pic02.jpg'))->to('png');
-//        $cc2 = \CloudConvert::file(public_path('images/pic06.jpg'))->to(['png', 'bmp']);
+//        $cc1 = \CloudConvert::file(public_path('images/pic01.jpg'))
+//                            ->callback('http://pagemeta.io/callback')
+//                            ->convert('png');
+//
+//        $cc2 = \CloudConvert::newInstance();
+//
+//        $cc2->file(public_path('images/pic02.jpg'))
+//            ->callback('http://pagemeta.io/callback2')
+//            ->convert('png');
+//
+//        dd($cc1, $cc2);
 //    });
+
 });
 
 
